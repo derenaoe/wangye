@@ -4,3 +4,4 @@
 /__pycache__/
 *.err
 *.tmp
+*.cfg
