@@ -1,0 +1,108 @@
+*{
+	margin: 0 ;
+	padding: 0;
+}
+body{
+
+	background: #333;
+}
+.content{
+	width: 1300px;
+	height: 600px;
+	margin: 0 auto;
+}
+
+.content .box{
+	width: 300px;
+	height: 400px;
+	float: left;
+	margin: 0 60px;
+	transition: 0.2s linear;
+	-webkit-transition: 0.2s linear;
+}
+.box .icon{
+	display: inline-block;
+	width: 100%;
+	height: 190px;
+}
+.box-mission  .icon{
+	width: 220px;
+	height: 220px;
+	display: block;
+	background:  url(../img/u=156575631,2072799902&fm=21&gp=0.jpg.png) no-repeat center center;
+	margin: 0 auto;
+	transition:all 0.2s;
+	-moz-transition:all 0.2s;
+}
+.box-play  .icon{
+	width: 220px;
+	height: 220px;
+	display: block;
+	background:  url(../img/005102sc25p5184mpak1m1.png.thumb.jpg.png) no-repeat center center;
+	margin: 0 auto;
+	transition:all 0.2s;
+	-moz-transition:all 0.2s;
+}
+.box .icon:hover{
+	transform: rotate(360deg) scale(1.2);
+	-ms-transform: rotate(360deg) scale(1.2);
+	-webkit-transform: rotate(360deg) scale(1.2);
+	-moz-transform: rotate(360deg) scale(1.2);
+}
+.box-touch  .icon{
+	width: 220px;
+	height: 220px;
+	display: block;
+	background: url(../img/u=1145199714,191599030&fm=21&gp=0.jpg.png) no-repeat center center;
+	margin: 0 auto;
+	transition:all 0.2s;
+	-moz-transition:all 0.2s;
+}
+
+.button  {
+	display: block;
+	width: 180px;
+	height: 45px;
+	line-height: 45px;
+	font-family: "微软雅黑";
+	font-weight: bolder;
+	color:#2DCB70;
+    border: 2px solid rgba(255,255,255,0.8);
+	padding-left: 20px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background: url(../img/jiantou.png) no-repeat 130px center ;
+	transition: 0.4s ease;
+	-moz-transition: 0.4s ease;
+	
+}
+
+.button:hover{
+	border: 2px solid rgba(255,255,255,1)
+    background-position: 140px center;
+}
+.button .line{
+	display: block;
+	position: absolute;
+    transition: all 0.4s ease;
+	-webkit-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+}
+.button:hover .line{
+	background: #FF0000;
+}
+
+.button .line-top{
+	width: 0px;
+	height: 2px;
+	top:-2px;
+	left: -110%;
+
+}
+.button:hover .line-top{
+	width: 100%;
+	left: -2px;
+}
+

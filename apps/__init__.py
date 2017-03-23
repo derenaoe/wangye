@@ -10,8 +10,10 @@ def register_blueprints(app):
     加载蓝图
     """
     from apps.index.views.index import index_blueprint
+    from apps.users.views.user import user_blueprint
 
     app.register_blueprint(index_blueprint)
+    app.register_blueprint(user_blueprint, url_prefix='/user')
 
 
 def create_app(cfg):
@@ -27,5 +29,10 @@ def create_app(cfg):
 
     # 加载配置文件
     app.config.from_pyfile(cfg)
+
+    # 处理静态文件
+    if app.has_static_folder:
+        app.add_url_rule(app.static_url_path + '/<path:filename>', endpoint='static', view_func=app.send_static_file)
+
     return app
 
