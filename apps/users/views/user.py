@@ -8,4 +8,15 @@ user_blueprint = Blueprint('user', __name__)
 
 @user_blueprint.route('/login/', methods=('GET', 'POST',))
 def login():
-    return render_template('test/indexdenglu.html')
+    """
+    登录路由
+    """
+    return render_template('user/login.html')
+
+
+@user_blueprint.route('/register/', methods=('GET', 'POST',))
+def register():
+    """
+    注册路由
+    """
+    return render_template('user/register.html')
