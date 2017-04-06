@@ -5,7 +5,8 @@
 		<title></title>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/button.css') }}">
 	<!--[if lt IE 9]>
 		<script src="js/css3-mediaqueries.js"></script>
 	<![endif]-->
@@ -135,14 +136,16 @@
 			                    <img src="" alt="" />
 			                </a>
 						</li>
-						<li class="hsearch">
+						<li class="home hsearch">
 							<form target="_blank" action="/search" accept-charset="UTF-8" method="get">
 							<input name="utf8" value="✓" type="hidden">
                             <input name="keyword" id="search-keyword" class="search-keyword" value="" placeholder="搜索"  type="text">
                             <a class="search-btn" href="javascript:void(null)">
                              <i class="iconfont ic-search"></i>
                             </a>
-                            <button type="submit" class="search-submit"></button>
+                            <button type="submit" class="search-submit">
+                            	搜索
+                            </button>
                             </form> 
 						</li>
 					</ul>
@@ -151,11 +154,11 @@
 				<div class="uns-box">
 					<ul class="menu">
 						<li class="u-i" style="display:list-item;">
-							<a class="i-link reg" href="../user/register.html">
+							<a class="i-link reg" href="{{ url_for('user.register')}}">
 								<span>注册</span>
 							</a>
 							<i class="s-line"></i>
-							<a class="i-link login" href="../user/login.html">
+							<a class="i-link login" href=" {{ url_for('user.login')}}">
 								<span>登录</span>
 							</a>
 						</li>
@@ -183,22 +186,25 @@
 					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
 					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
 					<div class="qianm clearfloat">
-						<span class="sp1"><b>688</b>浏览</span>
-						<span class="sp2">标题</span>
-						<span class="sp3">2小时前&nbsp;By</span>
+					<span class="button-wrap">
+                       <button class="button button-circle">
+                        <i class="fa fa-cloud"></i>
+                       </button>
+                    </span>
 					</div>
 				</li>
                 <li class="item">
 					<a href="{{ url_for('static', filename='images/t7.jpg') }}" class="a-img">
 						<img src="{{ url_for('static', filename='images/t7.jpg') }}" alt="">
-						
 					</a>
 					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
 					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
 					<div class="qianm clearfloat">
-						<span class="sp1"><b>688</b>浏览</span>
-						<span class="sp2">标题</span>
-						<span class="sp3">2小时前&nbsp;By</span>
+					<span class="button-wrap">
+                        <button class="button button-circle">
+                         <i class="fa fa-cloud"></i>
+                        </button>
+                    </span>
 					</div>
 				</li>
                 <li class="item">
