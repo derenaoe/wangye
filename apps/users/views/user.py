@@ -4,10 +4,11 @@ from flask import Blueprint
 from flask import request
 from flask import render_template
 from flask import redirect
-from flask_login import login_user, current_user
+from flask_login import login_user
 
 from apps.users.service.user import get_user_by_username
 from apps.users.form.register_form import RegisterForm
+from apps.users.form.login_form import LoginForm
 from apps.users.service.user import register_new_user
 
 user_blueprint = Blueprint('user', __name__)
@@ -20,6 +21,13 @@ def login():
     """
     if request.method == 'GET':
         return render_template('user/login.html')
+    form = LoginForm(request.form)
+
+    if form.validate_on_submit():
+        login_user(form.user)
+        return redirect('/')
+
+    return render_template('user/login.html')
 
 
 @user_blueprint.route('/register/', methods=('GET', 'POST',))

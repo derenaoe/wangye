@@ -33,7 +33,7 @@ def register_extensions(app):
     @login_manager.user_loader
     def load_user(user_id):
         from apps.users.model.user import User
-        return User.objects(_id=user_id).first()
+        return User.objects(id=user_id).first()
 
     # 登录入口
     login_manager.login_view = '/user/login/'

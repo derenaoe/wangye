@@ -29,8 +29,10 @@ class LoginForm(FlaskForm):
         校验密码
         """
         username = self.username.data
+        password = self.password.data
         user = get_user_by_username(username)
-        if user and user.password == self.password:
-            self.user = user
-        else:
-            raise ValueError('用户名或密码错误')
+        if user:
+            if user.check_password(password):
+                self.user = user
+                return user
+        raise ValueError('用户名或密码错误')

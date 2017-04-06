@@ -20,7 +20,7 @@ def register_new_user(register_form):
     """
     user = User()
     username = register_form.username.data
-    password = register_form.username.data
+    password = register_form.password.data
 
     if username and password:
         user.init_user(username, password)
