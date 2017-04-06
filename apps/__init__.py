@@ -4,6 +4,8 @@
 """
 from flask import Flask
 
+from apps.ext import register_extensions
+
 
 def register_blueprints(app):
     """
@@ -20,15 +22,17 @@ def create_app(cfg):
     """
     初始化系统
     """
-
     # 初始化 Flask app
     app = Flask(__name__)
 
-    # 注册蓝图
-    register_blueprints(app)
-
     # 加载配置文件
     app.config.from_pyfile(cfg)
+
+    # 注册组件
+    register_extensions(app)
+
+    # 注册蓝图
+    register_blueprints(app)
 
     # 处理静态文件
     if app.has_static_folder:
