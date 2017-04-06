@@ -1,7 +1,7 @@
 /.idea/
 *.zip
 *.rar
-*/__pycache__/
+/__pycache__/*
 *.err
 *.tmp
 *.cfg
