@@ -32,7 +32,7 @@ def register_extensions(app):
     # 登录回调函数
     @login_manager.user_loader
     def load_user(user_id):
-        from apps.users.model.user import User
+        from apps.user.model.user import User
         return User.objects(id=user_id).first()
 
     # 登录入口

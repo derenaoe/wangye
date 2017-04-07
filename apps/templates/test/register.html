@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>register</title>
-		<link rel="stylesheet" type="text/css" href="css/common.css"/>  
-		<script type="text/javascript" src="js/login.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/common.css') }}"/>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/login.js') }}"></script>
 	</head>
 	<body>
 	<div class="wrap login_wrap">
@@ -19,19 +19,33 @@
 							注册
 						</div>
 						<form action="" method="post">
-							
+                            {% if form %}
+                                {% for error in form.errors.username %}
+                                    <span style="color: red">{{ error }}</span>
+                                {% endfor %}
+                            {% endif %}
 							<div class="form_text_ipt">
-								<input name="username" type="text" placeholder="用户名/邮箱">
+								<input name="username" type="text" placeholder="用户名/邮箱" value="{{ form.username.data if form }}">
 							</div>
+                            {% if form %}
+                                {% for error in form.errors.password %}
+                                    <span style="color: red">{{ error }}</span>
+                                {% endfor %}
+                            {% endif %}
 							<div class="form_text_ipt">
-								<input name="password" type="password" placeholder="密码">
+								<input name="password" type="password" placeholder="密码" value="{{ form.password.data if form }}">
 							</div>
+                            {% if form %}
+                                {% for error in form.errors.re_password %}
+                                    <span style="color: red">{{ error }}</span>
+                                {% endfor %}
+                            {% endif %}
 							<div class="form_text_ipt">
-							    <input name="password" type="password" placeholder="重复密码">
+							    <input name="re_password" type="password" placeholder="重复密码" value="{{ form.re_password.data if form }}">
 							</div>
 							
 							<div class="form_btn">
-								<button type="button">注册</button>
+								<input type="submit">注册</input>
 							</div>
 							<div class="form_reg_btn">
 								<span>已帐号？</span><a href="login.html">马上登录</a>
