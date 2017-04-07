@@ -1,0 +1,63 @@
+		<div  class="z-top-container">
+			<div class="z-top b-header-blur b-header-blur-black">
+				<div class="b-header-mask-wrp">
+				<div class="b-header-mask"></div>
+			    </div>
+			   <div class="z-header">
+				<div id="" class="z-top-nav">
+					<ul>
+						<li class="home">
+							<a class="logo" href="{{ url_for('index.index') }}">首页
+			                    <img src="" alt="" />
+			                </a>
+						</li>
+						<li class="home hsearch">
+							<form target="_blank" action="/search" accept-charset="UTF-8" method="get" class="form-inline">
+							<input name="utf8" value="✓" type="hidden">
+                            <input name="keyword" id="search-keyword" class="form-control" value="" placeholder="搜索"  type="text">
+                            <a class="search-btn" href="javascript:void(null)">
+                             <i class="iconfont ic-search"></i>
+                            </a>
+                            <button type="submit" class="btn btn-default">
+                            	搜索
+                            </button>
+                            </form>
+						</li>
+					</ul>
+
+				</div>
+				<div class="uns-box">
+					<ul class="menu">
+                        {% if current_user.is_authenticated %}
+                        <li class="u-i" style="display:list-item;">
+                             您好!
+                            <a>
+                                <span style="font-size: 20px">{{ current_user.username }}</span>
+                            </a>
+                            <a href="{{ url_for('user.logout') }}">
+                                <span style="color: slategray">退出登录</span>
+                            </a>
+
+                        </li>
+                        {% else %}
+                        <li class="u-i" style="display:list-item;">
+                        <a class="i-link reg" href="{{ url_for('user.register')}}">
+                            <span>注册</span>
+                        </a>
+                        <i class="s-line"></i>
+                        <a class="i-link login" href=" {{ url_for('user.login')}}">
+                            <span>登录</span>
+                        </a>
+                        </li>
+                        {% endif %}
+						<li class="u-i">
+							<a class="i-link sumit" href="#">
+								<span id="">上传</span>
+							</a>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+			</div>
+		</div>

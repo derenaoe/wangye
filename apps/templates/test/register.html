@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>register</title>
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/common.css') }}"/>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/login.js') }}"></script>
+		<title>注册</title>
+        {% include 'test/head.html' %}
 	</head>
 	<body>
+    {% include 'test/header.html' %}
 	<div class="wrap login_wrap">
 			<div class="content">
 				
@@ -18,14 +18,14 @@
 						<div class="login_title">
 							注册
 						</div>
-						<form action="" method="post">
+						<form action="" method="post" class="form-group">
                             {% if form %}
                                 {% for error in form.errors.username %}
                                     <span style="color: red">{{ error }}</span>
                                 {% endfor %}
                             {% endif %}
 							<div class="form_text_ipt">
-								<input name="username" type="text" placeholder="用户名/邮箱" value="{{ form.username.data if form }}">
+								<input name="username" class="form-control" type="text" placeholder="用户名/邮箱" value="{{ form.username.data if form }}">
 							</div>
                             {% if form %}
                                 {% for error in form.errors.password %}
@@ -33,7 +33,7 @@
                                 {% endfor %}
                             {% endif %}
 							<div class="form_text_ipt">
-								<input name="password" type="password" placeholder="密码" value="{{ form.password.data if form }}">
+								<input name="password" class="form-control" type="password" placeholder="密码" value="{{ form.password.data if form }}">
 							</div>
                             {% if form %}
                                 {% for error in form.errors.re_password %}
@@ -41,14 +41,14 @@
                                 {% endfor %}
                             {% endif %}
 							<div class="form_text_ipt">
-							    <input name="re_password" type="password" placeholder="重复密码" value="{{ form.re_password.data if form }}">
+							    <input name="re_password" class="form-control" type="password" placeholder="重复密码" value="{{ form.re_password.data if form }}">
 							</div>
-							
+
 							<div class="form_btn">
-								<input type="submit">注册</input>
+								<input type="submit" class="btn btn-primary" style="height: 40px; width: 300px"  value="注册"/>
 							</div>
 							<div class="form_reg_btn">
-								<span>已帐号？</span><a href="login.html">马上登录</a>
+								<span>已帐号？</span><a href="{{ url_for('user.login') }}">马上登录</a>
 							</div>
 						</form>
 					</div>

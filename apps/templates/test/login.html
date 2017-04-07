@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Login</title>
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/common.css') }}"/>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/login.js') }}"></script>
+		<title>登录</title>
+        {% include 'test/head.html' %}
 	</head>
 	<body>
+    {% include 'test/header.html' %}
 	<div class="wrap login_wrap">
 			<div class="content">
 				
@@ -18,7 +18,7 @@
 						<div class="login_title">
 							登录
 						</div>
-						<form action="" method="post">
+						<form action="" method="post" class="form-group">
 							
 							<div class="form_text_ipt">
                                 {% if form %}
@@ -26,7 +26,7 @@
                                         <span style="color: red">{{ error }}</span>
                                     {% endfor %}
                                 {% endif %}
-								<input name="username" type="text" placeholder="用户名/邮箱" value="{{ form.username.data if form}}">
+								<input name="username" class="form-control" type="text" placeholder="用户名/邮箱" value="{{ form.username.data if form}}">
 							</div>
 							<div class="form_text_ipt">
                                 {% if form %}
@@ -34,7 +34,7 @@
                                         <span style="color: red">{{ error }}</span>
                                     {% endfor %}
                                 {% endif %}
-								<input name="password" type="password" placeholder="密码" value="{{ form.password.data if form}}">
+								<input name="password" class="form-control" type="password" placeholder="密码" value="{{ form.password.data if form}}">
 							</div>
 							<div class="form_check_ipt">
 								<div class="left check_left">
@@ -45,10 +45,10 @@
 								</div>
 							</div>
 							<div class="form_btn">
-								<input class="button" type="submit">登录</input>
+								<input class="btn btn-primary" style="height: 40px; width: 300px"  type="submit" value="登录"/>
 							</div>
 							<div class="form_reg_btn">
-								<span>还没有帐号？</span><a href="register.html">马上注册</a>
+								<span>还没有帐号？</span><a href="{{ url_for('user.register') }}">马上注册</a>
 							</div>
 						</form>
 					</div>
