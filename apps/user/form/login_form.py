@@ -4,7 +4,8 @@
 """
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Length
+from wtforms.validators import DataRequired, Length, Regexp
+
 
 from apps.user.service.user import get_user_by_username
 
@@ -19,7 +20,8 @@ class LoginForm(FlaskForm):
 
     username = StringField('username', validators=[
         DataRequired('手机号码不能为空'),
-        Length(min=6, max=16, message='用户名的长度为 6 到 16 位')])
+        Length(min=6, max=16, message='用户名的长度为 6 到 16 位'),
+        Regexp(regex='^[a-zA-Z][a-zA-z0-9-_]+', message='用户名格式错误')])
     password = StringField('password', validators=[
         DataRequired('密码不能为空'),
         Length(min=6, max=32, message='密码的长度为 6 到 32 位')])

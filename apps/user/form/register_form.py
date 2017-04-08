@@ -4,7 +4,8 @@
 """
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Length, EqualTo
+from wtforms.validators import DataRequired, Length
+from wtforms.validators import EqualTo, Regexp
 
 from apps.user.service.user import get_user_by_username
 
@@ -15,7 +16,9 @@ class RegisterForm(FlaskForm):
     """
     username = StringField('username', validators=[
         DataRequired('手机号码不能为空'),
-        Length(min=6, max=16, message='用户名的长度为 6 到 16 位')])
+        Length(min=6, max=16, message='用户名的长度为 6 到 16 位'),
+        Regexp(regex='^[a-zA-Z][a-zA-z0-9-_]+', message='用户名必须由字母开头, 可以由字母, 数字, _ 组成')
+    ])
 
     password = StringField('password', validators=[
         DataRequired('密码不能为空'),

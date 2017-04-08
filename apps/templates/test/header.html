@@ -41,13 +41,13 @@
                         </li>
                         {% else %}
                         <li class="u-i" style="display:list-item;">
-                        <a class="i-link reg" href="{{ url_for('user.register')}}">
-                            <span>注册</span>
-                        </a>
-                        <i class="s-line"></i>
-                        <a class="i-link login" href=" {{ url_for('user.login')}}">
-                            <span>登录</span>
-                        </a>
+                            <a class="i-link login" href=" {{ url_for('user.login')}}">
+                                <span>登录</span>
+                            </a>
+                            <i class="s-line"></i>
+                            <a class="i-link reg" href="{{ url_for('user.register')}}">
+                                <span>注册</span>
+                            </a>
                         </li>
                         {% endif %}
 						<li class="u-i">

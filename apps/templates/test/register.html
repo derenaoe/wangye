@@ -19,6 +19,7 @@
 							注册
 						</div>
 						<form action="" method="post" class="form-group">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                             {% if form %}
                                 {% for error in form.errors.username %}
                                     <span style="color: red">{{ error }}</span>

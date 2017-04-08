@@ -5,6 +5,7 @@
 from flask_mongoengine import MongoEngine
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
+from flask_wtf import CsrfProtect
 
 # MongoEngine 组件
 mongodb = MongoEngine()
@@ -14,6 +15,9 @@ login_manager = LoginManager()
 
 # 加密组件
 bcrypt = Bcrypt()
+
+# csrf 组件
+csrf = CsrfProtect()
 
 
 def register_extensions(app):
@@ -28,6 +32,9 @@ def register_extensions(app):
 
     # flask_login
     login_manager.init_app(app)
+
+    # csrf 保护
+    csrf.init_app(app)
 
     # 登录回调函数
     @login_manager.user_loader

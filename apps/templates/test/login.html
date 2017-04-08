@@ -19,7 +19,7 @@
 							登录
 						</div>
 						<form action="" method="post" class="form-group">
-							
+							<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 							<div class="form_text_ipt">
                                 {% if form %}
                                     {% for error in form.errors.username %}
