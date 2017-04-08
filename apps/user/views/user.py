@@ -6,11 +6,13 @@ from flask import render_template
 from flask import redirect
 from flask_login import login_user
 from flask_login import logout_user
+from flask_login import login_required
+from flask_login import current_user
 
-from apps.user.service.user import get_user_by_username
 from apps.user.form.register_form import RegisterForm
 from apps.user.form.login_form import LoginForm
 from apps.user.service.user import register_new_user
+from apps.user.service.user import mongoengine_get_user_by_id
 
 user_blueprint = Blueprint('user', __name__)
 
@@ -26,6 +28,8 @@ def login():
 
     if form.validate_on_submit():
         login_user(form.user)
+        if request.args.get('next'):
+            return redirect(request.args.get('next'))
         return redirect('/')
 
     return render_template('test/login.html', form=form)
@@ -57,15 +61,12 @@ def logout():
     return redirect('/')
 
 
-@user_blueprint.route('/profile/<string:username>/', methods=('GET', 'POST',))
-def user_profile(username):
+@user_blueprint.route('/profile/', methods=('GET', 'POST',))
+@login_required
+def user_profile():
     """
     用户详情
     """
-    user = None
-    if username:
-        user = get_user_by_username(username)
-    if user is not None:
-        return user.username
-    return '没有该用户'
-
+    user_id = current_user.id
+    user = mongoengine_get_user_by_id(user_id)
+    return render_template('test/profile.html', user=user)

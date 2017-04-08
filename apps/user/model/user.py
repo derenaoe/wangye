@@ -19,6 +19,8 @@ class User(mongodb.Document, UserMixin):
     username = StringField(db_field='username')    # 用户名
     password = StringField(db_field='password')    # 密码
     mobile = IntField(db_field='mobile')    # 手机号
+    nickname = StringField(db_field='nickname')    # 昵称
+    gender = StringField(db_field='gender')    # 性别
 
     def check_password(self, un_check_password):
         """

@@ -14,3 +14,8 @@ def mongoengine_insert_user(user):
     if user:
         return user.save()
     return None
+
+
+def mongoengine_get_user_by_id(uid):
+    user = User.objects(id=uid).first()
+    return user
