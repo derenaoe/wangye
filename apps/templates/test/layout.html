@@ -1,0 +1,30 @@
+{%- from "test/head.html" import head with context -%}
+{%- from "test/_macros.html" import header with context -%}
+{%- from "test/_macros.html" import footer with context -%}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    {{ head() }}
+    {% block css %}{% endblock %}
+</head>
+
+<body>
+    <div id="header">
+            {{ header() }}
+    </div>
+
+    {% block content %}{% endblock %}
+
+
+    <div id="footer">
+            {{ footer() }}
+    </div>
+
+    {% block js %}{% endblock %}
+</body>
+
+</html>
