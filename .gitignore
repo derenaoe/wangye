@@ -6,3 +6,4 @@
 *.tmp
 *.cfg
 .project
+*.pyc
