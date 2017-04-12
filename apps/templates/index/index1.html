@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<title>幽灵按钮</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	</head>
-	<body>
+{% extends "index/layout.html" %}
+	
+		{% block title %}传送门{% endblock %}
+	
+		
+{% block content %}
 		<div class="box">
 			<div class="link link-mission">
 				<span class="icon"></span>
@@ -38,5 +36,4 @@
 				</a>
 			</div>
 		</div>
-	</body>
-</html>
+{% endblock %}
