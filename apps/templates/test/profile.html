@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "test/layout.html" %}
+
+   {% block title %}Title{% endblock %}
+   
+{% block content %}
     <h1>用户名: {{ user.username }}</h1>
     <h1>手机: {{ user.mobile }}</h1>
     <h1>昵称: {{ user.nickname }}</h1>
     <h1>性别: {{ user.gender }}</h1>
-</body>
-</html>
+{% endblock %}

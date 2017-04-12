@@ -1,6 +1,6 @@
 .waterfull ul li span.button{
 	display: block;
-	position: absolute;
+	float: right;
 	
 }
 /*! @license

@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>注册</title>
+{% extends "test/layout.html" %}
+
+		{% block title %}注册页面{% endblock %}
         {% include 'test/head.html' %}
-	</head>
-	<body>
+
+{% block content %}
     {% include 'test/header.html' %}
 	<div class="wrap login_wrap">
 			<div class="content">
@@ -56,5 +54,4 @@
 				</div>
 			</div>
 		</div>
-	</body>
-</html>
+{% endblock %}
