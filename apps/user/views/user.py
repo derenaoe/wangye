@@ -69,4 +69,4 @@ def user_profile():
     """
     user_id = current_user.id
     user = mongoengine_get_user_by_id(user_id)
-    return render_template('test/profile.html', user=user)
+    return render_template('user/personalpage.html', user=user)
