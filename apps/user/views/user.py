@@ -23,7 +23,7 @@ def login():
     登录路由
     """
     if request.method == 'GET':
-        return render_template('test/login.html')
+        return render_template('user/login.html')
     form = LoginForm(request.form)
 
     if form.validate_on_submit():
@@ -32,7 +32,7 @@ def login():
             return redirect(request.args.get('next'))
         return redirect('/')
 
-    return render_template('test/login.html', form=form)
+    return render_template('user/login.html', form=form)
 
 
 @user_blueprint.route('/register/', methods=('GET', 'POST',))
@@ -41,7 +41,7 @@ def register():
     注册路由
     """
     if request.method == 'GET':
-        return render_template('test/register.html')
+        return render_template('user/register.html')
     form = RegisterForm(request.form)
 
     if form.validate_on_submit():
@@ -49,7 +49,7 @@ def register():
         login_user(user)
         return redirect('/')
 
-    return render_template('test/register.html', form=form)
+    return render_template('user/register.html', form=form)
 
 
 @user_blueprint.route('/logout/', methods=('GET', 'POST',))
