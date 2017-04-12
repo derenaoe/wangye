@@ -1,10 +1,164 @@
 {% extends "index/layout.html" %}
 	 
 	    {% block title %}个人主页{% endblock %}
-	    
-{% block content %}
-		
-		<div id="">
+	    {% block css %}
+	    	.header{
+				width: 980px;
+				height: 280px;
+				margin: 0 auto;
+			}
+			.header .top{
+				width: 250px;
+				height: 500px;
+			    float: left;
+			}
+			.top .top-user{
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				float: left;
+			}
+			.top .top-message{
+				width: 980px;
+				height: 70px;
+				background-color: darkgrey;
+				float: left;
+			}
+			.content-down{
+				width: 980px;
+				height: 900px;
+				margin: 0 auto;
+				position: relative;
+			}
 			
+			.top-message .tip{
+				position: relative;
+				height: 70px;
+				font-size: 18px;
+				display: inline-block;
+				color: #030303;
+				text-decoration: none;
+				line-height: 70px;
+                padding: 0 20px;
+                border-right: 1px solid #EDEDED;
+			}
+	    {% endblock %}
+{% block content %}
+		<div class="header">
+			<div class="top">	
+			<div class="top-user">
+		          
+			</div>
+			<div class="top-message">
+				<a class="tip" href="#">收集数</a>
+				<a class="tip" href="#">关注</a>
+			</div>	
+			</div>
+		</div>
+		<div class="content-down waterfull">
+			<ul>
+				<li class="item">	
+					<a href="images/t1.jpg" class="a-img" >
+						<img src="images/t1.jpg" alt="">
+					</a>
+					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">标题</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a href="images/t7.jpg" class="a-img">
+						<img src="images/t7.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">标题</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a href="images/t9.jpg" class="a-img">
+						<img src="images/t9.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">标题</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a href="images/t3.jpg" class="a-img">
+						<img src="images/t3.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">标题</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a href="images/t6.jpg" class="a-img">
+						<img src="images/t6.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">标题</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a href="images/t5.jpg" class="a-img">
+						<img src="images/t5.jpg" alt="">	
+					</a>
+					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">标题</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a href="images/t10.jpg" class="a-img">
+						<img src="images/t10.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">标题</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+				<li class="item">
+					<a href="images/t2.jpg" class="a-img">
+						<img src="images/t2.jpg" alt="">
+						
+					</a>
+					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">标题</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+			</ul>
 		</div>
 {% endblock %}
