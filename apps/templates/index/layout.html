@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <title>{% block title %}{% endblock %}</title>
     {{ head() }}
-    {% block css %}{% endblock %}
+    <style type="text/css">{% block css %}{% endblock %}</style>
 </head>
 
 <body>
