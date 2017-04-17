@@ -1,0 +1,50 @@
+{% extends "index/layout.html" %}
+
+		{% block title %}上传{% endblock %}
+	    {% block css %}
+		   .upload{
+				width: 600px;
+				height: 400px;
+				margin: 100px auto;
+				border:solid;
+				border-color: rgba(100,100,100,0.8);
+			}
+			.upload-up{
+				width: 100%;
+				height: 300px;
+				line-height: 300px;
+				text-align: center;
+			}
+			.upload-but{
+				width: 100%;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+                background: #d8b49c;
+                display: block;
+                font-size: 16px;
+               border-radius: 5px;
+               float: left;
+               position: relative;
+			}
+			.upload-fli{
+				display: block;
+                width: 100%;
+                height: 40px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+                border-radius: 5px;
+			}
+		{% endblock %}
+{% block content %}
+		<div id="" class="upload">
+			<div id="" class="upload-up">
+				<img src="img/d18296f485f22eba10aedb286d93ff35dc3a602c1cbc-78MqIo_fw658.png" />
+			</div>
+			<span id="" class="upload-but">上传
+				<input type="file" name="upload" class="upload-fli" value="" />
+			</span>
+		</div>
+{% endblock %}
