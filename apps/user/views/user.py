@@ -70,3 +70,15 @@ def user_profile():
     user_id = current_user.id
     user = mongoengine_get_user_by_id(user_id)
     return render_template('user/personalpage.html', user=user)
+
+
+@user_blueprint.route('/upload/picture/', methods=('GET', 'POST',))
+@login_required
+def user_upload_picture():
+    """
+    用户上传图片
+    """
+    if request.method == 'GET':
+        return render_template('test/upload.html')
+    return render_template('test/upload.html')
+

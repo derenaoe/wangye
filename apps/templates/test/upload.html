@@ -1,0 +1,79 @@
+{% extends "index/layout.html" %}
+{% block css %}
+    .container {
+        min-width: 1080px;
+    }
+    .title-2{
+        font-size: 20px;
+        border-left: 3px solid #88B7E0;
+        padding-left: 10px;
+    }
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1 class="h1">上传图片</h1>
+        <hr/>
+        <div class="col-xs-10">
+            <div class="row">
+                <form>
+                    <div class="col-xs-6">
+                        <label class="title-2">图片</label><br/><br/>
+                        <img id="preview" style="width: 320px;height: 450px;"/>
+                        <br/><br/>
+                        <label class="btn btn-info" id="addPicture">添加图片</label>
+                        <input style="display: none;" type="file" id="file" name="file" onchange="imgPreview(this)" />
+                    </div>
+                    <div class="col-xs-6">
+                        <label class="title-2">标题</label><br/><br/>
+                        <input class="form-control"/><br/>
+                        <label class="title-2">心情</label><br/><br/>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <input class="form-control"/><br/>
+                            </div>
+                        </div>
+                        <label class="title-2">描述</label><br/><br/>
+                        <textarea class="form-control" rows="10"></textarea><br/><br/>
+                        <input type="submit" class="btn btn-info" value="发布图片" style="float: right">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#addPicture").click(function() {
+		    $("#file").click();
+	});
+        })
+        function imgPreview(fileDom){
+            //判断是否支持FileReader
+            if (window.FileReader) {
+                var reader = new FileReader();
+            } else {
+                alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+            }
+
+            //获取文件
+            var file = fileDom.files[0];
+            var imageType = /^image\//;
+            //是否是图片
+            if (!imageType.test(file.type)) {
+                alert("请选择图片！");
+                return;
+            }
+            //读取完成
+            reader.onload = function(e) {
+                //获取图片dom
+                var img = document.getElementById("preview");
+                //图片路径设置为读取的图片
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+{% endblock %}
