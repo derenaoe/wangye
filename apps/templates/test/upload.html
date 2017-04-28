@@ -16,25 +16,26 @@
         <hr/>
         <div class="col-xs-10">
             <div class="row">
-                <form>
+                <form action="{{ url_for('user.user_upload_picture') }}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                     <div class="col-xs-6">
                         <label class="title-2">图片</label><br/><br/>
                         <img id="preview" style="width: 320px;height: 450px;"/>
                         <br/><br/>
                         <label class="btn btn-info" id="addPicture">添加图片</label>
-                        <input style="display: none;" type="file" id="file" name="file" onchange="imgPreview(this)" />
+                        <input style="display: none;" type="file" id="file" name="photo" onchange="imgPreview(this)" />
                     </div>
                     <div class="col-xs-6">
                         <label class="title-2">标题</label><br/><br/>
-                        <input class="form-control"/><br/>
-                        <label class="title-2">心情</label><br/><br/>
+                        <input class="form-control" name="title"/><br/>
+                        <label class="title-2">标签</label><br/><br/>
                         <div class="row">
                             <div class="col-xs-6">
-                                <input class="form-control"/><br/>
+                                <input class="form-control" name="tag"/><br/>
                             </div>
                         </div>
-                        <label class="title-2">描述</label><br/><br/>
-                        <textarea class="form-control" rows="10"></textarea><br/><br/>
+                        <label class="title-2" >描述</label><br/><br/>
+                        <textarea class="form-control" rows="10" name="description"></textarea><br/><br/>
                         <input type="submit" class="btn btn-info" value="发布图片" style="float: right">
                     </div>
                 </form>

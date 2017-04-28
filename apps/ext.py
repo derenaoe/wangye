@@ -6,6 +6,7 @@ from flask_mongoengine import MongoEngine
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from flask_wtf import CSRFProtect
+from flask_uploads import UploadSet
 
 # MongoEngine 组件
 mongodb = MongoEngine()
@@ -18,6 +19,9 @@ bcrypt = Bcrypt()
 
 # csrf 组件
 csrf = CSRFProtect()
+
+# 上传组件
+photos = UploadSet('PHOTO')
 
 
 def register_extensions(app):
@@ -35,6 +39,10 @@ def register_extensions(app):
 
     # csrf 保护
     csrf.init_app(app)
+
+    # 上传
+    from flask_uploads import configure_uploads
+    configure_uploads(app, photos)
 
     # 登录回调函数
     @login_manager.user_loader

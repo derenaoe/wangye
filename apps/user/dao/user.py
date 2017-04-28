@@ -19,3 +19,9 @@ def mongoengine_insert_user(user):
 def mongoengine_get_user_by_id(uid):
     user = User.objects(id=uid).first()
     return user
+
+
+def mongoengine_insert_picture(picture):
+    if picture:
+        return picture.save()
+    return None
