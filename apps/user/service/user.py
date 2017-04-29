@@ -7,6 +7,7 @@ from apps.user.dao.user import mongoengine_get_user_by_username
 from apps.user.dao.user import mongoengine_get_user_by_id
 from apps.user.dao.user import mongoengine_insert_user
 from apps.user.dao.user import mongoengine_insert_picture
+from apps.user.dao.user import mongoengine_get_pictures_by_username
 from apps.user.model.user import User
 from apps.user.model.picture import Picture
 from apps.utils.helps import get_uuid
@@ -65,3 +66,22 @@ def save_picture(picture_file):
         return None
     picture_name = get_uuid() + '.'
     return photos.save(picture_file, name=picture_name[:1] + '/' + picture_name[1:2] + '/' + picture_name)
+
+
+def get_user_pictures(username, page, num):
+    """
+    获取用户的图片
+    """
+    if not username:
+        return None
+    if page <= 0:
+        page = 1
+
+    pictures = mongoengine_get_pictures_by_username(username, page, num)
+
+    new_pictures = []
+    for picture in pictures:
+        picture.pict_ulr = photos.url(picture.pict_ulr)
+        new_pictures.append(picture)
+
+    return new_pictures

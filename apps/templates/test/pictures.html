@@ -1,0 +1,38 @@
+{% extends "index/layout.html" %}
+{% block css %}
+    .container {
+        min-width: 1080px;
+    }
+    .title-2{
+        font-size: 20px;
+        border-left: 3px solid #88B7E0;
+        padding-left: 10px;
+    }
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1 class="h1">我的图片</h1>
+        <hr/>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <h3 style="color: red">提示：{{ message }}</h3>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <br/>
+        <div class="col-xs-10">
+            <div class="row">
+                {% for picture in pictures %}
+                    <h1>标题：{{ picture.title }}</h1>
+                    <h2>标签：{{ picture.tag }}</h2>
+                    <img src="{{ picture.pict_ulr }}">
+                    <h1>描述：{{ picture.description }}</h1>
+                    <hr/>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

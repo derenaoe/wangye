@@ -5,6 +5,7 @@ from flask import request
 from flask import render_template
 from flask import redirect
 from flask import flash
+from flask import url_for
 from flask_login import login_user
 from flask_login import logout_user
 from flask_login import login_required
@@ -16,6 +17,7 @@ from apps.user.form.picture_form import PictureForm
 from apps.user.service.user import register_new_user
 from apps.user.service.user import mongoengine_get_user_by_id
 from apps.user.service.user import upload_picture
+from apps.user.service.user import get_user_pictures
 
 user_blueprint = Blueprint('user', __name__)
 
@@ -93,6 +95,18 @@ def user_upload_picture():
     if form.is_submitted():
         upload_picture(form, request.files['photo'], current_user.username)
         flash('上传成功')
-        return '上传成功'
+        return redirect(url_for('user.user_upload_picture'))
     return render_template('test/upload.html', form=form)
+
+
+@user_blueprint.route('/me/pictures/', methods=('GET',))
+@user_blueprint.route('/me/pictures/<int:page>', methods=('GET',))
+@login_required
+def user_my_pictures(page=1):
+    """
+    我上传的图片
+    """
+    username = current_user.username
+    pictures = get_user_pictures(username, page, 10)
+    return render_template('test/pictures.html', pictures=pictures)
 
