@@ -95,9 +95,10 @@ ul{
 	content:"";
 	overflow: hidden;
 	height:0px;
+
 }
 .clearfloat{
-	zoom:1;
+	zoom:1;	
 }
 .radius{
 	border-radius: 5px;
