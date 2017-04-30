@@ -6,19 +6,20 @@ body{
         background-color: #333333;   
     }   
 .login_wrap{
-	background: url(../img/logo_bg.jpg) no-repeat center;
+	background: url(../images/t7.jpg) no-repeat center;
+	width: 100%;
+	height: 680px;
 	background-size: 100%;
-	
 }
 .logo{
 	width: 500px;
 	height: 150px;
 	margin: 0px auto;
-	background: url(../img/logowz.png) no-repeat center;
+	background: url() no-repeat center;
 }
 .login_box{
 	width: 360px;
-	background: #333;
+	background: rgba(51,51,51,0.7);
 	margin: 0px auto;
 }
 .login_title{
@@ -33,9 +34,9 @@ body{
 .form_text_ipt{
 	width: 300px;
 	height: 40px;
-	border: solid 1px #333333;
+	border: solid 1px rgba(51，51，51，0.7);
 	margin: 20px auto 0 auto;
-	background: #333;
+	background: rgba(51，51，51，0.7);
 }
 .form_check_ipt{
 	width: 300px;

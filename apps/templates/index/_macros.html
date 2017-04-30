@@ -53,11 +53,14 @@
                             </a>
                         </li>
                         {% endif %}
+                        {% if current_user.is_authenticated %}
 						<li class="u-i">
 							<a class="i-link sumit" href="#">
 								<span id="">上传</span>
 							</a>
 						</li>
+						{% else %}
+						{% endif %}
 					</ul>
 
 				</div>
