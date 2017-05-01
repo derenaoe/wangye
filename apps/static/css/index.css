@@ -421,7 +421,7 @@ a img {
 	color: #000000;
 }
 .z-top-nav{
-	width: 336px;
+	width: 346px;
 }
 .z-top .z-top-nav ul {
 	zoom:1
@@ -450,7 +450,7 @@ a img {
 }
 .z-top-nav li.hsearch{
 	display: block;
-	padding: 0px 0 0px 20px;
+	padding: 0px 0px 0px 30px;
 }
 .uns-box .u-i .s-line {
 	display:inline-block;

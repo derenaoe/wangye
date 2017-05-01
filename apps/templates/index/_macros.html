@@ -11,7 +11,6 @@
 						<li class="home">
 							<img src="../../static/img/logo2.png" alt="" />
 							<a class="logo" href="{{ url_for('index.index') }}">首页
-			          
 			                </a>
 						</li>
 						<li class="home hsearch">
@@ -33,7 +32,7 @@
 					<ul class="menu">
                         {% if current_user.is_authenticated %}
                         <li class="u-i" style="display:list-item;">
-                             您好!
+                                                                                   您好!
                             <a href="{{ url_for('user.user_profile') }}">
                                 <span style="font-size: 20px">{{ current_user.username }}</span>
                             </a>
@@ -55,7 +54,7 @@
                         {% endif %}
                         {% if current_user.is_authenticated %}
 						<li class="u-i">
-							<a class="i-link sumit" href="{{ url_for('user.upload')}}">
+							<a class="i-link sumit" href="{{ url_for('user.user_upload_picture') }}">
 								<span id="">上传</span>
 							</a>
 						</li>
