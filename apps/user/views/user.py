@@ -84,19 +84,19 @@ def user_upload_picture():
     用户上传图片
     """
     if request.method == 'GET':
-        return render_template('test/upload.html')
+        return render_template('user/upload.html')
 
     form = PictureForm(request.form)
 
     if 'photo' not in request.files:
         flash('图片不能为空')
-        return render_template('test/upload.html', form=form)
+        return render_template('user/upload.html', form=form)
 
     if form.is_submitted():
         upload_picture(form, request.files['photo'], current_user.username)
         flash('上传成功')
         return redirect(url_for('user.user_upload_picture'))
-    return render_template('test/upload.html', form=form)
+    return render_template('user/upload.html', form=form)
 
 
 @user_blueprint.route('/me/pictures/', methods=('GET',))
