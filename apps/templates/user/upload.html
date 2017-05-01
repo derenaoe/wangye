@@ -1,43 +1,88 @@
 {% extends "index/layout.html" %}
-	
-		   {% block title %}上传页{% endblock %}
-		    {% block css %}
-		   .upload{
-				width: 500px;
-				height: 400px;
-				margin: 100px auto;
-				border:solid;
-				border-color: rgba(100,100,100,0.8);
-			}
-			.upload-up{
-				width: 100%;
-				height: 300px;
-				line-height: 300px;
-				text-align: center;
-			}
-			.upload-but a{
-				width: 100%;
-                height: 100px;
-                line-height: 100px;
-                text-align: center;
-                background: #d8b49c;
-                display: block;
-                font-size: 16px;
-               border-radius: 5px;
-               float: left;
-               position: relative;
-               text-decoration: none;
-               color: black;
-			}
-		 {% endblock %}
+{% block css %}
+    .container {
+        min-width: 1080px;
+    }
+    .title-2{
+        font-size: 20px;
+        border-left: 3px solid #88B7E0;
+        padding-left: 10px;
+    }
+{% endblock %}
 {% block content %}
-		<div id="" class="upload">
-			<div id="" class="upload-up">
-				<img src="img/d18296f485f22eba10aedb286d93ff35dc3a602c1cbc-78MqIo_fw658.png" />
-			</div>
-			<span id="" class="upload-but ">
-				<a href="upload-2.html">上传</a>
-			</span>
-			
-		</div>
+<div class="container">
+    <div class="row">
+        <h1 class="h1">上传图片</h1>
+        <hr/>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <h3 style="color: red">提示：{{ message }}</h3>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <br/>
+        <div class="col-xs-10">
+            <div class="row">
+                <form action="{{ url_for('user.user_upload_picture') }}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                    <div class="col-xs-6">
+                        <label class="title-2">图片</label><br/><br/>
+                        <img id="preview" style="width: 320px;height: 450px;"/>
+                        <br/><br/>
+                        <label class="btn btn-info" id="addPicture">添加图片</label>
+                        <input style="display: none;" type="file" id="file" name="photo" onchange="imgPreview(this)" />
+                    </div>
+                    <div class="col-xs-6">
+                        <label class="title-2">标题</label><br/><br/>
+                        <input class="form-control" name="title"/><br/>
+                        <label class="title-2">标签</label><br/><br/>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <input class="form-control" name="tag"/><br/>
+                            </div>
+                        </div>
+                        <label class="title-2" >描述</label><br/><br/>
+                        <textarea class="form-control" rows="10" name="description"></textarea><br/><br/>
+                        <input type="submit" class="btn btn-info" value="发布图片" style="float: right">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#addPicture").click(function() {
+		    $("#file").click();
+	});
+        })
+        function imgPreview(fileDom){
+            //判断是否支持FileReader
+            if (window.FileReader) {
+                var reader = new FileReader();
+            } else {
+                alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+            }
+
+            //获取文件
+            var file = fileDom.files[0];
+            var imageType = /^image\//;
+            //是否是图片
+            if (!imageType.test(file.type)) {
+                alert("请选择图片！");
+                return;
+            }
+            //读取完成
+            reader.onload = function(e) {
+                //获取图片dom
+                var img = document.getElementById("preview");
+                //图片路径设置为读取的图片
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
 {% endblock %}
