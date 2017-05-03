@@ -2,68 +2,86 @@
 	 
 	    {% block title %}个人主页{% endblock %}
 	    {% block css %}
+	        .b-content{
+	        	width: 100%;
+	        	height: 1200px;
+	        	background: #333;
+	        }
 	    	.header{
-				width: 980px;
-				height: 280px;
+				width: 1280px;
+				height: 160px;
+				margin: 0 auto;
+				background: url(../../static/img/banner.gif) no-repeat center;
+			    background-size: 100%;
+			}
+			.top-banner{
+				width: 1276px;
+				height: 100px;
 				margin: 0 auto;
 			}
-			.header .top{
-				width: 250px;
-				height: 500px;
-			    float: left;
-			}
-			.top .top-user{
-				width: 200px;
-				height: 200px;
-				background-color: pink;
-				float: left;
-			}
 			.top .top-message{
-				width: 980px;
-				height: 70px;
+				width: 1280px;
+				height: 60px;
 				background-color: darkgrey;
 				float: left;
+				margin: 0 auto;
 			}
 			.content-down{
-				width: 980px;
+				width: 1280px;
 				height: 900px;
 				position: relative;
 				margin: 0 auto;
 			}
-			
 			.top-message .tip{
 				position: relative;
-				height: 70px;
+				height: 60px;
 				font-size: 18px;
 				display: inline-block;
 				color: #030303;
 				text-decoration: none;
-				line-height: 70px;
+				line-height: 60px;
                 padding: 0 30px;
                 border-right: 1px solid #EDEDED;
 			}
 			.item .a-img{
-				width: 300px !important;
-				height: 450px !important;
+				width: 310px !important;
+				height: 400px !important;
 				display: block;
 				float: left;
 				position: relative;
 			}
+			.qianm{
+				float: right;
+			}
 	    {% endblock %}
 {% block content %}
-		<div class="header">
-			<div class="top">	
-			<div class="top-user">
+    <div class="b-content">
+	    <div class="header">
+			<div class="top-banner">
 		          
 			</div>
 			<div class="top-message">
 				<a class="tip" href="#">收集数</a>
 				<a class="tip" href="#">关注</a>
 			</div>	
-			</div>
 		</div>
 		<div class="content-down waterfull">
 			<ul>
+				<li class="item">
+					<a href="#" class="a-img">
+						<img src="{{ url_for('static', filename='images/t8.jpg') }}" alt="">
+						
+					</a>
+					<div class="qianm clearfloat">
+					<span class="button-wrap">
+                       <button class="button button-circle">
+                        <i class="fa fa-cloud">
+                        	<img src="../../static/img/lotus.png" />
+                        </i>
+                       </button>
+                    </span>
+					</div>
+				</li>
                 <li class="item">
 					<a href="{{ url_for('static', filename='images/t8.jpg') }}" class="a-img">
 						<img src="{{ url_for('static', filename='images/t8.jpg') }}" alt="">
@@ -149,4 +167,5 @@
 					</div>
 				</li>
 		</div>
+    </div>
 {% endblock %}
