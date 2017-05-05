@@ -67,14 +67,17 @@ def logout():
 
 
 @user_blueprint.route('/profile/', methods=('GET', 'POST',))
+@user_blueprint.route('/profile/<int:page>', methods=('GET', 'POST',))
 @login_required
-def user_profile():
+def user_profile(page=1):
     """
     用户详情
     """
     user_id = current_user.id
     user = mongoengine_get_user_by_id(user_id)
-    return render_template('user/personalpage.html', user=user)
+
+    picture_page = get_user_pictures(user.username, page, 8)
+    return render_template('test/personalpage.html', user=user, picture_page=picture_page)
 
 
 @user_blueprint.route('/upload/picture/', methods=('GET', 'POST',))
@@ -97,16 +100,3 @@ def user_upload_picture():
         flash('上传成功')
         return redirect(url_for('user.user_upload_picture'))
     return render_template('user/upload.html', form=form)
-
-
-@user_blueprint.route('/me/pictures/', methods=('GET',))
-@user_blueprint.route('/me/pictures/<int:page>', methods=('GET',))
-@login_required
-def user_my_pictures(page=1):
-    """
-    我上传的图片
-    """
-    username = current_user.username
-    pictures = get_user_pictures(username, page, 10)
-    return render_template('test/pictures.html', pictures=pictures)
-

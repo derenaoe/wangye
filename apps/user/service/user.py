@@ -8,9 +8,11 @@ from apps.user.dao.user import mongoengine_get_user_by_id
 from apps.user.dao.user import mongoengine_insert_user
 from apps.user.dao.user import mongoengine_insert_picture
 from apps.user.dao.user import mongoengine_get_pictures_by_username
+from apps.user.dao.user import mongoengine_get_pictures_count_by_username
 from apps.user.model.user import User
 from apps.user.model.picture import Picture
 from apps.utils.helps import get_uuid
+from apps.utils.page import Page
 
 
 def get_user_by_username(username):
@@ -77,6 +79,10 @@ def get_user_pictures(username, page, num):
     if page <= 0:
         page = 1
 
+    count = mongoengine_get_pictures_count_by_username(username)
+    if not count:
+        return None
+
     pictures = mongoengine_get_pictures_by_username(username, page, num)
 
     new_pictures = []
@@ -84,4 +90,6 @@ def get_user_pictures(username, page, num):
         picture.pict_ulr = photos.url(picture.pict_ulr)
         new_pictures.append(picture)
 
-    return new_pictures
+    picture_page = Page(page=page, num=num, total=count, data=new_pictures)
+
+    return picture_page

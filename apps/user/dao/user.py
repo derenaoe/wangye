@@ -30,3 +30,7 @@ def mongoengine_insert_picture(picture):
 
 def mongoengine_get_pictures_by_username(username, page, num):
     return Picture.objects(username=username).order_by('-create_time').skip((page - 1) * num).limit(num)
+
+
+def mongoengine_get_pictures_count_by_username(username):
+    return Picture.objects(username=username).count()

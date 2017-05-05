@@ -1,0 +1,91 @@
+{% extends "index/layout.html" %}
+	 
+	    {% block title %}个人主页{% endblock %}
+	    {% block css %}
+	        .b-content{
+	        	width: 100%;
+	        	height: 1200px;
+	        	background: #333;
+	        }
+	    	.header{
+				width: 1280px;
+				height: 160px;
+				margin: 0 auto;
+				background: url(../../static/img/banner.gif) no-repeat center;
+			    background-size: 100%;
+			}
+			.top-banner{
+				width: 1276px;
+				height: 100px;
+				margin: 0 auto;
+			}
+			.top .top-message{
+				width: 1280px;
+				height: 60px;
+				background-color: darkgrey;
+				float: left;
+				margin: 0 auto;
+			}
+			.content-down{
+				width: 1280px;
+				height: 900px;
+				position: relative;
+				margin: 0 auto;
+			}
+			.top-message .tip{
+				position: relative;
+				height: 60px;
+				font-size: 18px;
+				display: inline-block;
+				color: #030303;
+				text-decoration: none;
+				line-height: 60px;
+                padding: 0 30px;
+                border-right: 1px solid #EDEDED;
+			}
+			.qianm{
+				float: right;
+			}
+	    {% endblock %}
+{% block content %}
+    <div class="b-content">
+	    <div class="header">
+			<div class="top-banner">
+
+			</div>
+			<div class="top-message">
+				<a class="tip" href="#">收集数</a>
+				<a class="tip" href="#">关注</a>
+                <a {% if picture_page %}{% if picture_page.page != 1 %}href="{{ url_for('user.user_profile', page=picture_page.page - 1) }}"{% endif %}{% endif %}><button class="btn btn-info">上一页</button></a>
+                <a {% if picture_page %}{% if picture_page.page != picture_page.pages %}href="{{ url_for('user.user_profile', page=picture_page.page + 1) }}"{% endif %}{% endif %}><button class="btn btn-info">下一页</button></a>
+			</div>
+		</div>
+        <div class="content">
+            <div class="content-down waterfull clearfloat">
+                <ul>
+                    {% if picture_page %}
+                    {% for picture in picture_page.items %}
+                    <li class="item">
+                        <a href="{{ picture.pict_ulr }}" class="a-img">
+                            <img src="{{ picture.pict_ulr }}" alt="">
+                        </a>
+                        <h2 class="li-title" title="{{ picture.title }}">{{ picture.title }}</h2>
+                        <p class="description">{{ picture.description }}</p>
+                        <div class="qianm clearfloat">
+                          <span class="button-wrap">
+                            <button class="button button-circle">
+                             <i class="fa fa-cloud">
+                                <img src="../../static/img/lotus.png" />
+                             </i>
+                            </button>
+                          </span>
+                        </div>
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
