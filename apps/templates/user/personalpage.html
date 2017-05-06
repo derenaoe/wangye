@@ -11,7 +11,7 @@
 				width: 1280px;
 				height: 160px;
 				margin: 0 auto;
-				background: url(../../static/img/banner.gif) no-repeat center;
+				background: url(../../static/img/boll.gif) no-repeat center;
 			    background-size: 100%;
 			}
 			.top-banner{
@@ -19,12 +19,10 @@
 				height: 100px;
 				margin: 0 auto;
 			}
-			.top .top-message{
+			.top-message{
 				width: 1280px;
 				height: 60px;
-				background-color: darkgrey;
-				float: left;
-				margin: 0 auto;
+		        padding: 0 0 0 760px;
 			}
 			.content-down{
 				width: 1280px;
@@ -37,7 +35,7 @@
 				height: 60px;
 				font-size: 18px;
 				display: inline-block;
-				color: #030303;
+				color: white;
 				text-decoration: none;
 				line-height: 60px;
                 padding: 0 30px;
@@ -63,109 +61,33 @@
 			<div class="top-message">
 				<a class="tip" href="#">收集数</a>
 				<a class="tip" href="#">关注</a>
+				<a {% if picture_page %}{% if picture_page.page != 1 %}href="{{ url_for('user.user_profile', page=picture_page.page - 1) }}"{% endif %}{% endif %}><button class="btn btn-info">上一页</button></a>
+                <a {% if picture_page %}{% if picture_page.page != picture_page.pages %}href="{{ url_for('user.user_profile', page=picture_page.page + 1) }}"{% endif %}{% endif %}><button class="btn btn-info">下一页</button></a>
 			</div>	
 		</div>
 		<div class="content-down waterfull">
 			<ul>
-				<li class="item">
-					<a href="#" class="a-img">
-						<img src="{{ url_for('static', filename='images/t8.jpg') }}" alt="">
-						
-					</a>
-					<div class="qianm clearfloat">
-					<span class="button-wrap">
-                       <button class="button button-circle">
-                        <i class="fa fa-cloud">
-                        	<img src="../../static/img/lotus.png" />
-                        </i>
-                       </button>
-                    </span>
-					</div>
-				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t8.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t8.jpg') }}" alt="">
-						
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					<span class="button-wrap">
-                       <button class="button button-circle">
-                        <i class="fa fa-cloud">
-                        	<img src="../../static/img/lotus.png" />
-                        </i>
-                       </button>
-                    </span>
-					</div>
-				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t7.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t7.jpg') }}" alt="">
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					<span class="button-wrap">
-                        <button class="button button-circle">
-                         <i class="fa fa-cloud">
-                         	<img src="../../static/img/lotus.png" />
-                         </i>
-                        </button>
-                    </span>
-					</div>
-				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t9.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t9.jpg') }}" alt="">
-						
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					  <span class="button-wrap">
-                        <button class="button button-circle">
-                         <i class="fa fa-cloud">
-                         	<img src="../../static/img/lotus.png" />
-                         </i>
-                        </button>
-                      </span>
-					</div>
-				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t3.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t3.jpg') }}" alt="">
-						
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					  <span class="button-wrap">
-                       <button class="button button-circle">
-                        <i class="fa fa-cloud">
-                        	<img src="../../static/img/lotus.png" />
-                        </i>
-                       </button>
-                      </span>
-					</div>
-				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t6.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t6.jpg') }}" alt="">
-						
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					<span class="button-wrap">
-                       <button class="button button-circle">
-                        <i class="fa fa-cloud">
-                        	<img src="../../static/img/lotus.png" />
-                        </i>
-                       </button>
-                    </span>
-					</div>
-				</li>
+				{% if picture_page %}
+                {% for picture in picture_page.items %}
+				   <li class="item">
+                        <a href="{{ picture.pict_ulr }}" class="a-img">
+                            <img src="{{ picture.pict_ulr }}" alt="">
+                        </a>
+                        <h2 class="li-title" title="{{ picture.title }}">{{ picture.title }}</h2>
+                        <p class="description">{{ picture.description }}</p>
+                        <div class="qianm clearfloat">
+                          <span class="button-wrap">
+                            <button class="button button-circle">
+                             <i class="fa fa-cloud">
+                                <img src="../../static/img/lotus.png" />
+                             </i>
+                            </button>
+                          </span>
+                        </div>
+                    </li>
+                {% endfor %}
+                {% endif %}
+            </ul>
 		</div>
     </div>
 {% endblock %}
