@@ -77,7 +77,7 @@ def user_profile(page=1):
     user = mongoengine_get_user_by_id(user_id)
 
     picture_page = get_user_pictures(user.username, page, 8)
-    return render_template('test/personalpage.html', user=user, picture_page=picture_page)
+    return render_template('user/personalpage.html', user=user, picture_page=picture_page)
 
 
 @user_blueprint.route('/upload/picture/', methods=('GET', 'POST',))
