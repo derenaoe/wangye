@@ -41,15 +41,16 @@
                 padding: 0 30px;
                 border-right: 1px solid #EDEDED;
 			}
-			.item .a-img{
-				width: 310px !important;
-				height: 400px !important;
-				display: block;
-				float: left;
-				position: relative;
-			}
 			.qianm{
 				float: right;
+			}
+	        .a-img{
+				height: 300px !important;
+				display: block;
+				position: relative;
+			}
+			.a-down{
+				height:80px;
 			}
 	    {% endblock %}
 {% block content %}
@@ -70,11 +71,16 @@
 				{% if picture_page %}
                 {% for picture in picture_page.items %}
 				   <li class="item">
-                        <a href="{{ picture.pict_ulr }}" class="a-img">
+				   	   <div class="a-img">
+				   	   	<a href="{{ picture.pict_ulr }}" class="a-img">
                             <img src="{{ picture.pict_ulr }}" alt="">
                         </a>
-                        <h2 class="li-title" title="{{ picture.title }}">{{ picture.title }}</h2>
+				   	   </div>
+                        <div class="a-down">
+                        	 <h2 class="li-title" title="{{ picture.title }}">{{ picture.title }}</h2>
                         <p class="description">{{ picture.description }}</p>
+                        </div>
+                    
                         <div class="qianm clearfloat">
                           <span class="button-wrap">
                             <button class="button button-circle">
