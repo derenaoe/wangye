@@ -2,9 +2,10 @@
 	 
 	    {% block title %}个人主页{% endblock %}
 	    {% block css %}
-	        .b-content{
+            .b-content{
 	        	width: 100%;
-	        	height: 1200px;
+	        	height: 1280px;
+	        	margin: 0 auto;
 	        	background: #333;
 	        }
 	    	.header{
@@ -15,7 +16,7 @@
 			    background-size: 100%;
 			}
 			.top-banner{
-				width: 1276px;
+				width: 1280px;
 				height: 100px;
 				margin: 0 auto;
 			}
@@ -24,12 +25,7 @@
 				height: 60px;
 		        padding: 0 0 0 760px;
 			}
-			.content-down{
-				width: 1280px;
-				height: 900px;
-				position: relative;
-				margin: 0 auto;
-			}
+			
 			.top-message .tip{
 				position: relative;
 				height: 60px;
@@ -41,17 +37,12 @@
                 padding: 0 30px;
                 border-right: 1px solid #EDEDED;
 			}
-			.qianm{
-				float: right;
-			}
-	        .a-img{
-				height: 300px !important;
-				display: block;
-				position: relative;
-			}
-			.a-down{
-				height:80px;
-			}
+			.button-wrap
+            {
+	          float: right;
+            }
+    
+			
 	    {% endblock %}
 {% block content %}
     <div class="b-content">
@@ -66,21 +57,18 @@
                 <a {% if picture_page %}{% if picture_page.page != picture_page.pages %}href="{{ url_for('user.user_profile', page=picture_page.page + 1) }}"{% endif %}{% endif %}><button class="btn btn-info">下一页</button></a>
 			</div>	
 		</div>
-		<div class="content-down waterfull">
+		<div class="content-down waterfull clearfloat">
 			<ul>
 				{% if picture_page %}
                 {% for picture in picture_page.items %}
 				   <li class="item">
-				   	   <div class="a-img">
 				   	   	<a href="{{ picture.pict_ulr }}" class="a-img">
                             <img src="{{ picture.pict_ulr }}" alt="">
                         </a>
-				   	   </div>
-                        <div class="a-down">
-                        	 <h2 class="li-title" title="{{ picture.title }}">{{ picture.title }}</h2>
+
+                        <h2 class="li-title" title="{{ picture.title }}">{{ picture.title }}</h2>
                         <p class="description">{{ picture.description }}</p>
-                        </div>
-                    
+                       
                         <div class="qianm clearfloat">
                           <span class="button-wrap">
                             <button class="button button-circle">
