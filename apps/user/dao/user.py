@@ -34,3 +34,14 @@ def mongoengine_get_pictures_by_username(username, page, num):
 
 def mongoengine_get_pictures_count_by_username(username):
     return Picture.objects(username=username).count()
+
+
+def mongoengine_get_picture_by_username_and_pid(username, pid):
+    return Picture.objects(username=username, id=pid).first()
+
+
+def mongoengine_remove_picture_by_pid(pid):
+    return Picture.objects(id=pid).delete()
+
+def mongoengine_get_index_picture(page, num):
+    return Picture.objects().order_by('-create_time').skip((page - 1) * num).limit(num)

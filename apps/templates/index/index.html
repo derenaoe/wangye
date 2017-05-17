@@ -10,14 +10,16 @@
 		<div class="content">
 		<!-- 瀑布流样式开始 -->
 		<div class="waterfull clearfloat" id="waterfull">
+            <input type="hidden" value="{{ page }}" id="index_page">
 			<ul>
+                {% for picture in index_pictures %}
                 <li class="item">
-					<a href="{{ url_for('static', filename='images/t8.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t8.jpg') }}" alt="">
+					<a href="{{ picture.pict_ulr }}" class="a-img">
+						<img src="{{ picture.pict_ulr }}" alt="">
 						
 					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+					<h2 class="li-title" title="{{ picture.title }}">{{ picture.title }}</h2>
+					<p class="description">{{ picture.description }}</p>
 					<div class="qianm clearfloat">
 					<span class="button-wrap">
                        <button class="button button-circle">
@@ -28,174 +30,7 @@
                     </span>
 					</div>
 				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t7.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t7.jpg') }}" alt="">
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					<span class="button-wrap">
-                        <button class="button button-circle">
-                         <i class="fa fa-cloud">
-                         	<img src="../../static/img/xin.png" />
-                         </i>
-                        </button>
-                    </span>
-					</div>
-				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t9.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t9.jpg') }}" alt="">
-						
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					  <span class="button-wrap">
-                        <button class="button button-circle">
-                         <i class="fa fa-cloud">
-                         	<img src="../../static/img/xin.png" />
-                         </i>
-                        </button>
-                      </span>
-					</div>
-				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t3.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t3.jpg') }}" alt="">
-						
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					  <span class="button-wrap">
-                       <button class="button button-circle">
-                        <i class="fa fa-cloud">
-                        	<img src="../../static/img/xin.png" />
-                        </i>
-                       </button>
-                      </span>
-					</div>
-				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t6.jpg') }}" class="a-img">
-					<img src="{{ url_for('static', filename='images/t6.jpg') }}" alt="">
-						
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					<span class="button-wrap">
-                       <button class="button button-circle">
-                        <i class="fa fa-cloud">
-                        	<img src="../../static/img/xin.png" />
-                        </i>
-                       </button>
-                    </span>
-					</div>
-				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t5.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t5.jpg') }}" alt="">
-
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					  <span class="button-wrap">
-                        <button class="button button-circle">
-                         <i class="fa fa-cloud">
-                         	<img src="../../static/img/xin.png" />
-                         </i>
-                        </button>
-                      </span>
-					</div>
-				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t10.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t10.jpg') }}" alt="">
-						
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					<span class="button-wrap">
-                        <button class="button button-circle">
-                         <i class="fa fa-cloud">
-                         	<img src="../../static/img/xin.png" />
-                         </i>
-                        </button>
-                     </span>
-					</div>
-				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t2.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t2.jpg') }}" alt="">
-						
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					<span class="button-wrap">
-                        <button class="button button-circle">
-                         <i class="fa fa-cloud">
-                         	<img src="../../static/img/xin.png" />
-                         </i>
-                        </button>
-                    </span>
-					</div>
-				</li>
-                <li class="item">
-					<a href="{{ url_for('static', filename='images/t8.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t8.jpg') }}" alt="">
-						
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					<span class="button-wrap">
-                        <button class="button button-circle">
-                         <i class="fa fa-cloud">
-                         	<img src="../../static/img/xin.png" />
-                         </i>
-                        </button>
-                    </span>
-					</div>
-				</li>
-				<li class="item">
-					<a href="{{ url_for('static', filename='images/t7.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t7.jpg') }}" alt="">
-						
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					<span class="button-wrap">
-                        <button class="button button-circle">
-                         <i class="fa fa-cloud">
-                         	<img src="../../static/img/xin.png" />
-                         </i>
-                        </button>
-                    </span>
-					</div>
-				</li>
-				<li class="item">
-					<a href="{{ url_for('static', filename='images/t9.jpg') }}" class="a-img">
-						<img src="{{ url_for('static', filename='images/t9.jpg') }}" alt="">
-						
-					</a>
-					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
-					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
-					<div class="qianm clearfloat">
-					<span class="button-wrap">
-                        <button class="button button-circle">
-                         <i class="fa fa-cloud">
-                         <img src="../../static/img/xin.png" /></i>
-                        </button>
-                    </span>
-					</div>
-				</li>
+                {% endfor %}
 			</ul>
 		</div>
 		<!-- loading按钮自己通过样式调整 -->
@@ -243,7 +78,7 @@
                       });
                     });
                     /*模拟从后台获取到的数据*/
-                    var sqlJson=[{'title':'瀑布流其实就是几个函数的事！','intro':'爆料，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。','src':'images/one.jpg','writer':'标题','date':'2小时前','looked':321},{'title':'瀑布流其实就是几个函数的事！','intro':'爆料了，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。','src':'images/demo2.jpg','writer':'标题','date':'2小时前','looked':321},{'title':'瀑布流其实就是几个函数的事！','intro':'爆料了，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。','src':'images/p1.jpg','writer':'标题','date':'2小时前','looked':321},{'title':'瀑布流其实就是几个函数的事！','intro':'爆料了，苏亚雷斯又咬人啦，C罗哪有内马尔帅，梅西今年要不夺冠，你就去泰国吧，老子买了阿根廷赢得彩票，输了就去不成了。','src':'images/p1.jpg','writer':'标题','date':'2小时前','looked':321}];
+
                     /*本应该通过ajax从后台请求过来类似sqljson的数据然后，便利，进行填充，这里我们用sqlJson来模拟一下数据*/
                     $(window).scroll(function(){
                         if(!loading.data("on")) return;
@@ -259,14 +94,14 @@
                             loading.data("on",false).fadeIn(800);
                             (function(sqlJson){
                                 /*这里会根据后台返回的数据来判断是否你进行分页或者数据加载完毕这里假设大于30就不在加载数据*/
-                                if(itemNum>30){
+                                if(sqlJson.length == 0){
                                     loading.text('就有这么多了！');
                                 }else{
                                     var html="";
                                     for(var i in sqlJson){
-                                        html+="<li class='item'><a href='#' class='a-img'><img src='"+sqlJson[i].src+"'></a>";
+                                        html+="<li class='item'><a href='#' class='a-img'><img src='"+sqlJson[i].pict_url+"'></a>";
                                         html+="<h2 class='li-title'>"+sqlJson[i].title+"</h2>";
-                                        html+="<p class='description'>"+sqlJson[i].intro+"</p><div class='qianm clearfloat'>";
+                                        html+="<p class='description'>"+sqlJson[i].description+"</p><div class='qianm clearfloat'>";
                                         html+="<span class='sp1'><b>"+sqlJson[i].looked+"</b>浏览</span>";
                                         html+="<span class='sp2'>"+sqlJson[i].writer+"</span><span class='sp3'>"+sqlJson[i].date+"&nbsp;By</span></div></li>";
                                     }
@@ -284,7 +119,7 @@
                                         });
                                     },800)
                                 }
-                            })(sqlJson);
+                            })(get_index_pictures());
                         }
                     });
                     function loadImage(url) {
@@ -309,5 +144,22 @@
                         $(this).stop(true).animate({'backgroundColor':'#fff'},1000);
                     });
             })
+            function get_index_pictures() {
+                page = $("#index_page").val();
+                $("#index_page").attr("value", parseInt(page) + 1);
+                var host = window.location.host;
+                var pictures = 1;
+                $.ajax({
+                    type:"get",
+                    url: "http://" + host + "/pictures/" + (parseInt(page) + 1),
+                    async:false,
+                    success:function(data) {
+                        if(data != null ) {
+                            pictures = data;
+                        }
+                    }
+                });
+                return pictures;
+            }
         </script>
 {% endblock %}

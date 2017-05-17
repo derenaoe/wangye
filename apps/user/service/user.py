@@ -9,6 +9,9 @@ from apps.user.dao.user import mongoengine_insert_user
 from apps.user.dao.user import mongoengine_insert_picture
 from apps.user.dao.user import mongoengine_get_pictures_by_username
 from apps.user.dao.user import mongoengine_get_pictures_count_by_username
+from apps.user.dao.user import mongoengine_get_picture_by_username_and_pid
+from apps.user.dao.user import mongoengine_remove_picture_by_pid
+from apps.user.dao.user import mongoengine_get_index_picture
 from apps.user.model.user import User
 from apps.user.model.picture import Picture
 from apps.utils.helps import get_uuid
@@ -85,11 +88,38 @@ def get_user_pictures(username, page, num):
 
     pictures = mongoengine_get_pictures_by_username(username, page, num)
 
-    new_pictures = []
-    for picture in pictures:
-        picture.pict_ulr = photos.url(picture.pict_ulr)
-        new_pictures.append(picture)
+    new_pictures = get_pictures_url(pictures)
 
     picture_page = Page(page=page, num=num, total=count, data=new_pictures)
 
     return picture_page
+
+
+def get_user_picture(username, pid):
+    if pid:
+        return mongoengine_get_picture_by_username_and_pid(username, pid)
+    return None
+
+
+def get_pictures_url(pictures):
+    new_pictures = []
+    for picture in pictures:
+        picture.pict_ulr = photos.url(picture.pict_ulr)
+        new_pictures.append(picture)
+    return new_pictures
+
+
+def remove_user_picture(pid):
+    if pid:
+        return mongoengine_remove_picture_by_pid(pid)
+    return None
+
+def get_index_picture(page, num):
+    if not page or page < 1:
+        page = 1
+
+    pictures = mongoengine_get_index_picture(page, num)
+
+    new_pictures = get_pictures_url(pictures)
+
+    return new_pictures

@@ -18,6 +18,8 @@ from apps.user.service.user import register_new_user
 from apps.user.service.user import mongoengine_get_user_by_id
 from apps.user.service.user import upload_picture
 from apps.user.service.user import get_user_pictures
+from apps.user.service.user import get_user_picture
+from apps.user.service.user import remove_user_picture
 
 user_blueprint = Blueprint('user', __name__)
 
@@ -91,7 +93,7 @@ def user_upload_picture():
 
     form = PictureForm(request.form)
 
-    if 'photo' not in request.files:
+    if 'photo' not in request.files or not request.files['photo']:
         flash('图片不能为空')
         return render_template('user/upload.html', form=form)
 
@@ -100,3 +102,21 @@ def user_upload_picture():
         flash('上传成功')
         return redirect(url_for('user.user_upload_picture'))
     return render_template('user/upload.html', form=form)
+
+
+@user_blueprint.route('/delete/picture/', methods=('POST',))
+@login_required
+def user_delete_picture():
+    """
+    用户删除图片
+    """
+    picture_id = request.form.get('p_id')
+    username = current_user.username
+    picture = get_user_picture(username, picture_id)
+
+    if not picture_id or not picture:
+        flash("没有该图片!")
+    else:
+        remove_user_picture(picture.id)
+        flash('删除成功')
+    return redirect(url_for('user.user_profile'))
