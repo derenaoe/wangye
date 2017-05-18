@@ -9,6 +9,13 @@
 {% block content %}
 		<div class="content">
 		<!-- 瀑布流样式开始 -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <h3 style="color: red">提示：{{ message }}</h3>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
 		<div class="waterfull clearfloat" id="waterfull">
             <input type="hidden" value="{{ page }}" id="index_page">
 			<ul>
