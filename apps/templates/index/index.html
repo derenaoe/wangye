@@ -102,8 +102,8 @@
                                         html+="<li class='item'><a href='#' class='a-img'><img src='"+sqlJson[i].pict_url+"'></a>";
                                         html+="<h2 class='li-title'>"+sqlJson[i].title+"</h2>";
                                         html+="<p class='description'>"+sqlJson[i].description+"</p><div class='qianm clearfloat'>";
-                                        html+="<span class='sp1'><b>"+sqlJson[i].looked+"</b>浏览</span>";
-                                        html+="<span class='sp2'>"+sqlJson[i].writer+"</span><span class='sp3'>"+sqlJson[i].date+"&nbsp;By</span></div></li>";
+                                        html+="<span class='button-wrap'><button class='button button-circle'><i class='fa fa-cloud'><img src='../../static/img/xin.png' /></i></button></span></div></li>";
+                        
                                     }
                                     /*模拟ajax请求数据时延时800毫秒*/
                                     var time=setTimeout(function(){
