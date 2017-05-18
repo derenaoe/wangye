@@ -14,9 +14,8 @@
 			                </a>
 						</li>
 						<li class="home hsearch">
-							<form target="_blank" action="/search" accept-charset="UTF-8" method="get" class="form-inline">
-							<input name="utf8" value="✓" type="hidden">
-                            <input name="keyword" id="search-keyword" class="form-control" value="" placeholder="搜索"  type="text">
+							<form target="_blank" action="{{ url_for('index.index_search') }}" method="get" class="form-inline">
+                            <input name="keyword" id="search-keyword" class="form-control" value="{% if keyword %}{{ keyword }}{% endif %}" placeholder="搜索"  type="text">
                             <a class="search-btn" href="javascript:void(null)">
                              <i class="iconfont ic-search"></i>
                             </a>

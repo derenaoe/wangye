@@ -12,6 +12,7 @@ from apps.user.dao.user import mongoengine_get_pictures_count_by_username
 from apps.user.dao.user import mongoengine_get_picture_by_username_and_pid
 from apps.user.dao.user import mongoengine_remove_picture_by_pid
 from apps.user.dao.user import mongoengine_get_index_picture
+from apps.user.dao.user import mongoengine_get_picture_by_keyword
 from apps.user.model.user import User
 from apps.user.model.picture import Picture
 from apps.utils.helps import get_uuid
@@ -114,6 +115,7 @@ def remove_user_picture(pid):
         return mongoengine_remove_picture_by_pid(pid)
     return None
 
+
 def get_index_picture(page, num):
     if not page or page < 1:
         page = 1
@@ -122,4 +124,16 @@ def get_index_picture(page, num):
 
     new_pictures = get_pictures_url(pictures)
 
+    return new_pictures
+
+
+def get_picture_by_keyword(page, num, keyword):
+    """
+    搜索图片
+    """
+    if not page or page < 1:
+        page = 1
+
+    pictures = mongoengine_get_picture_by_keyword(page, num, keyword)
+    new_pictures = get_pictures_url(pictures)
     return new_pictures

@@ -1,5 +1,5 @@
 {% extends "index/layout.html" %}
-{% block title %}首页{% endblock %}
+{% block title %}{% if keyword %}搜索-{{ keyword }}{% else %}首页{% endif %}{% endblock %}
 {% block css %}
 .button-wrap
 {
@@ -146,12 +146,19 @@
             })
             function get_index_pictures() {
                 page = $("#index_page").val();
-                $("#index_page").attr("value", parseInt(page) + 1);
                 var host = window.location.host;
                 var pictures = 1;
+                $("#index_page").attr("value", parseInt(page) + 1);
+                {% if keyword %}
+                var keyword = "{{ keyword }}";
+                var thisUrl = "http://" + host + '/pictures/search/json/' + (parseInt(page) + 1) + '?keyword=' + keyword;
+                {% else %}
+                var thisUrl = "http://" + host + "/pictures/" + (parseInt(page) + 1);
+                {% endif %}
+
                 $.ajax({
                     type:"get",
-                    url: "http://" + host + "/pictures/" + (parseInt(page) + 1),
+                    url: thisUrl,
                     async:false,
                     success:function(data) {
                         if(data != null ) {
