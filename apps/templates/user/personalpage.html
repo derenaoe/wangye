@@ -34,16 +34,14 @@
 				color: white;
 				text-decoration: none;
 				line-height: 60px;
-                padding: 0 30px;
-                border-right: 1px solid #EDEDED;
+                padding: 0 60px;
+               
 			}
 			.button-wrap
             {
 	          float: right;
             }
-             ul li .item{
-            	over float: hide !important;
-            }
+            
 			
 	    {% endblock %}
 {% block content %}
@@ -60,7 +58,6 @@
 			</div>
 			<div class="top-message">
 				<a class="tip" href="#">收集数</a>
-				<a class="tip" href="#">关注</a>
 				<a {% if picture_page %}{% if picture_page.page != 1 %}href="{{ url_for('user.user_profile', page=picture_page.page - 1) }}"{% endif %}{% endif %}><button class="btn btn-info">上一页</button></a>
                 <a {% if picture_page %}{% if picture_page.page != picture_page.pages %}href="{{ url_for('user.user_profile', page=picture_page.page + 1) }}"{% endif %}{% endif %}><button class="btn btn-info">下一页</button></a>
 			</div>	
