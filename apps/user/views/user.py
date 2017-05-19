@@ -69,7 +69,7 @@ def register():
 @user_blueprint.route('/logout/', methods=('GET', 'POST',))
 def logout():
     """
-    用户登录
+    用户登出
     """
     logout_user()
     return redirect('/')

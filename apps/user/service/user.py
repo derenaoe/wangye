@@ -104,12 +104,14 @@ def get_user_pictures(username, page, num):
 
 
 def get_user_picture(username, pid):
+    """通过图片 id 获取用户的一张图片"""
     if pid:
         return mongoengine_get_picture_by_username_and_pid(username, pid)
     return None
 
 
 def get_pictures_url(pictures):
+    """获取图片的路径"""
     new_pictures = []
     for picture in pictures:
         picture.pict_ulr = photos.url(picture.pict_ulr)
@@ -118,12 +120,16 @@ def get_pictures_url(pictures):
 
 
 def remove_user_picture(pid):
+    """删除图片"""
     if pid:
         return mongoengine_remove_picture_by_pid(pid)
     return None
 
 
 def get_index_picture(page, num):
+    """
+    获取首页的图片
+    """
     if not page or page < 1:
         page = 1
 
