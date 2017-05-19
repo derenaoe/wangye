@@ -41,8 +41,7 @@
             {
 	          float: right;
             }
-            
-			
+           
 	    {% endblock %}
 {% block content %}
     <div class="b-content">
@@ -58,6 +57,7 @@
 			</div>
 			<div class="top-message">
 				<a class="tip" href="#">收集数</a>
+				<a ><button class="btn">我的收藏</button></a>
 				<a {% if picture_page %}{% if picture_page.page != 1 %}href="{{ url_for('user.user_profile', page=picture_page.page - 1) }}"{% endif %}{% endif %}><button class="btn btn-info">上一页</button></a>
                 <a {% if picture_page %}{% if picture_page.page != picture_page.pages %}href="{{ url_for('user.user_profile', page=picture_page.page + 1) }}"{% endif %}{% endif %}><button class="btn btn-info">下一页</button></a>
 			</div>	
