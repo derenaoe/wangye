@@ -13,6 +13,13 @@ from apps.user.dao.user import mongoengine_get_picture_by_username_and_pid
 from apps.user.dao.user import mongoengine_remove_picture_by_pid
 from apps.user.dao.user import mongoengine_get_index_picture
 from apps.user.dao.user import mongoengine_get_picture_by_keyword
+from apps.user.dao.user import mongoengine_get_picture_by_id
+from apps.user.dao.user import mongoengine_save_collect_picture
+from apps.user.dao.user import mongoengine_get_collect_picture_by_pid
+from apps.user.dao.user import mongoengine_get_collect_picture_by_id
+from apps.user.dao.user import mongoengine_get_collect_pictures_by_username
+from apps.user.dao.user import mongoengine_get_collect_pictures_count_by_username
+from apps.user.dao.user import mongoengine_delete_collect_picture
 from apps.user.model.user import User
 from apps.user.model.picture import Picture
 from apps.utils.helps import get_uuid
@@ -137,3 +144,64 @@ def get_picture_by_keyword(page, num, keyword):
     pictures = mongoengine_get_picture_by_keyword(page, num, keyword)
     new_pictures = get_pictures_url(pictures)
     return new_pictures
+
+
+def get_picture_by_id(p_id):
+    """
+    通过图片 id 获取图片
+    """
+    if not p_id:
+        return None
+    return mongoengine_get_picture_by_id(p_id)
+
+
+def collect_picture(picture, username):
+    """
+    收藏图片
+    """
+    return mongoengine_save_collect_picture(picture, username)
+
+
+def get_collect_picture_by_pid(p_id, username):
+    """
+    获取收藏图片
+    """
+    if not p_id or not username:
+        return None
+    return mongoengine_get_collect_picture_by_pid(p_id, username)
+
+
+def get_collect_picture_by_id(p_id, username):
+    """
+    获取收藏图片
+    """
+    if not p_id or not username:
+        return None
+    return mongoengine_get_collect_picture_by_id(p_id, username)
+
+
+def get_collect_pictures_by_username(username, page, num):
+    """
+    获取用户收藏的图片
+    """
+    if not page or page < 1:
+        page = 1
+
+    count = mongoengine_get_collect_pictures_count_by_username(username)
+    if not count:
+        return None
+
+    pictures =  mongoengine_get_collect_pictures_by_username(username, page, num)
+
+    new_pictures = get_pictures_url(pictures)
+
+    picture_page = Page(page=page, num=num, total=count, data=new_pictures)
+
+    return picture_page
+
+
+def delete_collect_picture(picture):
+    """
+    删除收藏图片
+    """
+    return mongoengine_delete_collect_picture(picture)

@@ -6,6 +6,7 @@ from flask import render_template
 from flask import redirect
 from flask import flash
 from flask import url_for
+from flask import jsonify
 from flask_login import login_user
 from flask_login import logout_user
 from flask_login import login_required
@@ -20,6 +21,12 @@ from apps.user.service.user import upload_picture
 from apps.user.service.user import get_user_pictures
 from apps.user.service.user import get_user_picture
 from apps.user.service.user import remove_user_picture
+from apps.user.service.user import get_picture_by_id
+from apps.user.service.user import get_collect_picture_by_pid
+from apps.user.service.user import get_collect_picture_by_id
+from apps.user.service.user import collect_picture
+from apps.user.service.user import delete_collect_picture
+from apps.user.service.user import get_collect_pictures_by_username
 
 user_blueprint = Blueprint('user', __name__)
 
@@ -120,3 +127,64 @@ def user_delete_picture():
         remove_user_picture(picture.id)
         flash('删除成功')
     return redirect(url_for('user.user_profile'))
+
+
+@user_blueprint.route('/collect/picture/', methods=('POST',))
+@login_required
+def user_collect_picture():
+    """
+    收藏图片
+    """
+    p_id = request.form.get('p_id')
+
+    picture = get_picture_by_id(p_id)
+    if not picture:
+        return jsonify({'code': 202, 'msg': '查无此图片！'})
+
+    username = current_user.username
+    if picture.username == username:
+        return jsonify({'code': 202, 'msg': '不能收藏自己的图片！'})
+
+    this_picture = get_collect_picture_by_pid(p_id, username)
+    if this_picture:
+        return jsonify({'code': 202, 'msg': '你已经收藏了这个商品！'})
+
+    collect_picture(picture, username)
+
+    return jsonify({'code': 200, 'msg': '收藏成功！'})
+
+
+@user_blueprint.route('/profile/collect/pictures/', methods=('GET',))
+@user_blueprint.route('/profile/collect/pictures/<int:page>', methods=('GET',))
+@login_required
+def user_get_collect_pictures(page=1):
+    """
+    获取收藏的图片
+    """
+    username = current_user.username
+    user_id = current_user.id
+    user = mongoengine_get_user_by_id(user_id)
+
+    picture_page = get_collect_pictures_by_username(username, page,8)
+
+    return render_template('user/personalpage.html', user=user, picture_page=picture_page, type='collect')
+
+
+@user_blueprint.route('/delete/collect/picture/', methods=('POST',))
+def user_remove_collect_picture():
+    """
+    删除收藏
+    """
+    username = current_user.username
+    p_id = request.form.get('p_id')
+
+    picture = get_collect_picture_by_id(p_id, username)
+
+    print(picture)
+    if not p_id or not picture:
+        flash('你没有收藏这张图片！')
+        return redirect(url_for('user.user_get_collect_pictures'))
+
+    delete_collect_picture(picture)
+    flash('删除收藏图片成功！')
+    return redirect(url_for('user.user_get_collect_pictures'))

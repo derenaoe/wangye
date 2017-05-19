@@ -12,7 +12,7 @@
 				width: 1280px;
 				height: 160px;
 				margin: 0 auto;
-				background: url(../../static/img/boll.gif) no-repeat center;
+				background: url({{ url_for('static', filename='img/boll.gif') }}) no-repeat center;
 			    background-size: 100%;
 			}
 			.top-banner{
@@ -56,10 +56,10 @@
                 {% endwith %}
 			</div>
 			<div class="top-message">
-				<a class="tip" href="#">收集数</a>
-				<a ><button class="btn">我的收藏</button></a>
-				<a {% if picture_page %}{% if picture_page.page != 1 %}href="{{ url_for('user.user_profile', page=picture_page.page - 1) }}"{% endif %}{% endif %}><button class="btn btn-info">上一页</button></a>
-                <a {% if picture_page %}{% if picture_page.page != picture_page.pages %}href="{{ url_for('user.user_profile', page=picture_page.page + 1) }}"{% endif %}{% endif %}><button class="btn btn-info">下一页</button></a>
+				<a class="tip" href="#">收集数 &nbsp;&nbsp;{{ picture_page.total }}</a>
+				{% if type and type == 'collect' %}<a href="{{ url_for('user.user_profile') }}"><button class="btn">我的图片</button></a>{% else %}<a href="{{ url_for('user.user_get_collect_pictures', page=1) }}"><button class="btn">我的收藏</button>{% endif %}
+				<a {% if picture_page %}{% if picture_page.page != 1 %}href="{% if type and type == 'collect' %}{{ url_for('user.user_get_collect_pictures', page=picture_page.page - 1) }}{% else %}{{ url_for('user.user_profile', page=picture_page.page - 1) }}{% endif %}"{% endif %}{% endif %}><button class="btn btn-info">上一页</button></a>
+                <a {% if picture_page %}{% if picture_page.page != picture_page.pages %}href="{% if type and type == 'collect' %}{{ url_for('user.user_get_collect_pictures', page=picture_page.page + 1) }}{% else %}{{ url_for('user.user_profile', page=picture_page.page + 1) }}{% endif %}"{% endif %}{% endif %}><button class="btn btn-info">下一页</button></a>
 			</div>	
 		</div>
 		<div class="content-down waterfull clearfloat">
@@ -75,7 +75,8 @@
                         <p class="description">{{ picture.description }}</p>
                        
                         <div class="qianm clearfloat">
-                            <form action="{{ url_for('user.user_delete_picture') }}" method="post">
+
+                            <form action="{% if type and type == 'collect' %}{{ url_for('user.user_remove_collect_picture') }}{% else %}{{ url_for('user.user_delete_picture') }}{% endif %}" method="post">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                                 <input type="hidden" name="p_id" value="{{ picture.id }}">
                           <span class="button-wrap">
@@ -83,7 +84,7 @@
 
                             <button class="button button-circle">
                              <i class="fa fa-cloud">
-                                <img src="../../static/img/lotus.png" />
+                                <img src="{{ url_for('static', filename='img/lotus.png') }}" />
                              </i>
                             </button>
 

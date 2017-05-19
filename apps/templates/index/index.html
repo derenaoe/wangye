@@ -29,7 +29,8 @@
 					<p class="description">{{ picture.description }}</p>
 					<div class="qianm clearfloat">
 					<span class="button-wrap">
-                       <button class="button button-circle">
+                       <button class="button button-circle" onclick="collect_picture(this)">
+                           <input value="{{ picture.id }}" id="pid" type="hidden">
                         <i class="fa fa-cloud">
                         	<img src="../../static/img/xin.png" />
                         </i>
@@ -109,8 +110,8 @@
                                         html+="<li class='item'><a href='#' class='a-img'><img src='"+sqlJson[i].pict_url+"'></a>";
                                         html+="<h2 class='li-title'>"+sqlJson[i].title+"</h2>";
                                         html+="<p class='description'>"+sqlJson[i].description+"</p><div class='qianm clearfloat'>";
-                                        html+="<span class='button-wrap'><button class='button button-circle'><i class='fa fa-cloud'><img src='../../static/img/xin.png' /></i></button></span></div></li>";
-                        
+                                        html+="<span class='button-wrap'><button  onclick='collect_picture(this)' class='button button-circle'><input type='hidden' value='"+ sqlJson[i]._id.$oid  +"' id='pid'/><i class='fa fa-cloud'><img src='../../static/img/xin.png' /></i></button></span></div></li>";
+
                                     }
                                     /*模拟ajax请求数据时延时800毫秒*/
                                     var time=setTimeout(function(){
@@ -175,5 +176,32 @@
                 });
                 return pictures;
             }
+            function collect_picture(env) {
+                var pid = $(env).children('#pid').val();
+                var host = window.location.host;
+                var thisUrl = "http://" + host + "/user/collect/picture/";
+
+                $.ajax({
+                    type:"post",
+                    url: thisUrl,
+                    async:true,
+                    data: {p_id:pid},
+                    success:function(data) {
+                        if(data != null ) {
+                            alert(data.msg)
+                        }
+                    }
+                });
+            }
+
+            var csrftoken = $('meta[name=csrf-token]').attr('content');
+
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken)
+                    }
+                }
+            })
         </script>
 {% endblock %}
